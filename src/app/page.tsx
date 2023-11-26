@@ -1,7 +1,12 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
 export default function Home() {
-  return (
-    <div className="bg-blue-500 text-red-500">
-      <p>Hello World</p>
-    </div>
-  );
+  return <div></div>;
 }
