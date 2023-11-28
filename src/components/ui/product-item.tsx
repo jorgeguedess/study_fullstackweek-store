@@ -1,8 +1,6 @@
 import { ProductWithTotalPrice } from "@/helpers/products";
 import { convertToCoin } from "@/utils/convertToCoin";
 import Image from "next/image";
-import { Badge } from "./badge";
-import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import DiscountBadge from "./discount-badge";
 
