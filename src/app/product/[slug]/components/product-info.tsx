@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import DiscountBadge from "@/components/ui/discount-badge";
 import { ProductWithTotalPrice } from "@/helpers/products";
 import { convertToCoin } from "@/utils/convertToCoin";
 import {
@@ -39,9 +40,7 @@ const ProductInfo = ({
       <div className="flex items-center gap-1">
         <h1 className="text-xl font-bold">{convertToCoin(totalPrice)}</h1>
         {discountPercentage > 0 && (
-          <Badge className="px-2 py-[2px]">
-            <ArrowDown size={14} /> {discountPercentage}%
-          </Badge>
+          <DiscountBadge>{discountPercentage}</DiscountBadge>
         )}
       </div>
       {discountPercentage > 0 && (
