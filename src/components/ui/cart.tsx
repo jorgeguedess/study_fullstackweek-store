@@ -4,9 +4,11 @@ import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { computeProductTotalPrice } from "@/helpers/products";
+import { Separator } from "./separator";
+import { convertToCoin } from "@/utils/convertToCoin";
 
 const Cart = () => {
-  const { products } = useContext(CartContext);
+  const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
   return (
     <div className="flex flex-col gap-8">
@@ -15,17 +17,53 @@ const Cart = () => {
         variant="outline"
       >
         <ShoppingCartIcon size={16} />
-        Catálogo
+        Carrinho
       </Badge>
 
       {/* RENDERIZAR OS PRODUTOS */}
       <div className="flex flex-col gap-5">
-        {products.map((product) => (
-          <CartItem
-            product={computeProductTotalPrice(product as any) as any}
-            key={product.id}
-          />
-        ))}
+        {products.length > 0 ? (
+          products.map((product) => (
+            <CartItem
+              product={computeProductTotalPrice(product as any) as any}
+              key={product.id}
+            />
+          ))
+        ) : (
+          <p className="text-center font-bold">
+            Carrinho vazio. Vamos fazer compras?
+          </p>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <Separator />
+
+        <div className="flex items-center justify-between text-xs">
+          <p>Subtotal</p>
+          <p>{convertToCoin(subtotal)}</p>
+        </div>
+
+        <Separator />
+
+        <div className="flex items-center justify-between text-xs">
+          <p>Entrega</p>
+          <p className="uppercase">Grátis</p>
+        </div>
+
+        <Separator />
+
+        <div className="flex items-center justify-between text-xs">
+          <p>Descontos</p>
+          <p>{convertToCoin(totalDiscount)}</p>
+        </div>
+
+        <Separator />
+
+        <div className="flex items-center justify-between text-sm font-bold">
+          <p>Total</p>
+          <p>{convertToCoin(total)}</p>
+        </div>
       </div>
     </div>
   );
