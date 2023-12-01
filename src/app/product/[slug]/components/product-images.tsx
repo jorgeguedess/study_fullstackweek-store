@@ -17,14 +17,14 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
 
   return (
     <div className="flex flex-col">
-      <div className="h[380px] flex w-full items-center justify-center bg-accent">
+      <div className="flex h-[380px] w-full items-center justify-center bg-accent">
         <Image
           src={currentImage}
           alt={name}
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto max-h-[70%] w-auto max-w-[50%]"
+          className="h-auto  max-h-[70%] w-full max-w-[50%]"
           style={{
             objectFit: "contain",
           }}
@@ -48,7 +48,7 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
               height={0}
               width={0}
               sizes="100vw"
-              className="h-auto max-h-[70%] w-auto max-w-[80%]"
+              className="h-auto max-h-[70%] w-auto  max-w-[80%]"
             />
           </button>
         ))}
