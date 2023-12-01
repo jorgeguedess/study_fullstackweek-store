@@ -24,9 +24,7 @@ const Cart = () => {
           <CartItem
             product={computeProductTotalPrice(product as any) as any}
             key={product.id}
-          >
-            {product.name}
-          </CartItem>
+          />
         ))}
       </div>
     </div>
