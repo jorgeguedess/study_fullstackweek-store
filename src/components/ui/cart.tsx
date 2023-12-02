@@ -54,42 +54,44 @@ const Cart = () => {
         </ScrollArea>
       </div>
 
-      <div className="flex flex-col gap-3">
-        <Separator />
+      {products.length > 0 && (
+        <div className="flex flex-col gap-3">
+          <Separator />
 
-        <div className="flex items-center justify-between text-xs">
-          <p>Subtotal</p>
-          <p>{convertToCoin(subtotal)}</p>
+          <div className="flex items-center justify-between text-xs">
+            <p>Subtotal</p>
+            <p>{convertToCoin(subtotal)}</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-xs">
+            <p>Entrega</p>
+            <p className="uppercase">Grátis</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-xs">
+            <p>Descontos</p>
+            <p>{convertToCoin(totalDiscount)}</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-sm font-bold">
+            <p>Total</p>
+            <p>{convertToCoin(total)}</p>
+          </div>
+
+          <Button
+            onClick={handleFinishPurchaseClick}
+            className="mt-7 font-bold uppercase"
+          >
+            Finalizar compra
+          </Button>
         </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between text-xs">
-          <p>Entrega</p>
-          <p className="uppercase">Grátis</p>
-        </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between text-xs">
-          <p>Descontos</p>
-          <p>{convertToCoin(totalDiscount)}</p>
-        </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between text-sm font-bold">
-          <p>Total</p>
-          <p>{convertToCoin(total)}</p>
-        </div>
-
-        <Button
-          onClick={handleFinishPurchaseClick}
-          className="mt-7 font-bold uppercase"
-        >
-          Finalizar compra
-        </Button>
-      </div>
+      )}
     </div>
   );
 };
