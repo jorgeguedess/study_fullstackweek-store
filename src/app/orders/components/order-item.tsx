@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { useMemo } from "react";
 import { convertToCoin } from "@/utils/convertToCoin";
 import { computeProductTotalPrice } from "@/helpers/products";
+import { getOrderStatus } from "../helpers/status";
 
 interface OrderItemProps {
   order: Prisma.OrderGetPayload<{
@@ -24,9 +25,6 @@ interface OrderItemProps {
 }
 
 const OrderItem = ({ order }: OrderItemProps) => {
-  const textStatus =
-    order.status === "PAYMENT_CONFIRMED" ? "Pago" : "Em andamento";
-
   const subtotal = useMemo(() => {
     return order.orderProducts.reduce((acc, orderProduct) => {
       return (
@@ -69,7 +67,7 @@ const OrderItem = ({ order }: OrderItemProps) => {
                         : "text-red-500"
                     }
                   >
-                    {textStatus}
+                    {getOrderStatus(order.status)}
                   </p>
                 </div>
 
