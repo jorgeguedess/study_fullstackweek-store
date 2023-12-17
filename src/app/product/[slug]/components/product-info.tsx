@@ -8,17 +8,26 @@ import { convertToCoin } from "@/utils/convertToCoin";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 
+import { useToast } from "@/components/ui/use-toast";
+
 interface ProductInfoProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
+  const { toast } = useToast();
+
   const [quantity, setQuantity] = useState(1);
 
   const { addProductToCart } = useContext(CartContext);
 
   const handleAddToCartClick = () => {
     addProductToCart({ ...product, quantity });
+
+    toast({
+      title: "Produto adicionado com sucesso!",
+      duration: 2000,
+    });
   };
 
   const handleDecreaseQuantityClick = () => {
